@@ -4,12 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const name = 'Josh Perez';
-const element = <h1>Hello, {name}</h1>;
+function tick() {
+  const element = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(element, document.getElementById('root'));
+}
 
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
-
-reportWebVitals();
+setInterval(tick, 1000);
