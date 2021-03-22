@@ -3,46 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-function formatDate(date) {
-  return date.toLocaleDateString();
-}
-
-function Comment(props) {
+function Clock(props) {
   return (
-    <div className="Comment">
-      <div className="UserInfo">
-        <img className="Avatar"
-          src={props.author.avatarUrl}
-          alt={props.author.name}
-        />
-        <div className="UserInfo-name">
-          {props.author.name}
-        </div>
-      </div>
-      <div className="Comment-text">
-        {props.text}
-      </div>
-      <div className="Comment-date">
-        {formatDate(props.date)}
-      </div>
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {props.date.toLocaleTimeString()}.</h2>
     </div>
   );
 }
 
-const comment = {
-  date: new Date(),
-  text: 'I hope you enjoy learning React!',
-  author: {
-    name: 'Hello Kitty',
-    avatarUrl: 'https://placekitten.com/g/64/64',
-  },
+function tick() {
+  ReactDOM.render(
+    <Clock date={new Date()} />,
+    document.getElementById('root')
+  );
 }
 
-ReactDOM.render(
-  <Comment 
-  date={comment.date}
-  text={comment.text}
-  author={comment.author}
-  />,
-  document.getElementById('root')
-);
+setInterval(tick, 1000);
