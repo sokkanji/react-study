@@ -3,45 +3,48 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class LoginControl extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.state = {isLoggedIn: false};
+    this.handleLogOutClick = this.handleLogOutClick.bind(this);
+    this.state = { isLoggedin : false };
   }
 
   handleLoginClick() {
-    this.setState({isLoggedIn: true});
+    this.setState({
+      isLoggedIn : true
+    });
   }
 
-  handleLogoutClick() {
-    this.setState({isLoggedIn: false});
+  handleLogOutClick() {
+    this.setState({
+      isLoggedIn : false
+    });
   }
 
   render() {
     const isLoggedIn = this.state.isLoggedIn;
-
     return (
       <div>
         <Greeting isLoggedIn={isLoggedIn} />
-        { isLoggedIn 
-          ? <LogoutButton onClick={this.handleLogoutClick} />
+        { isLoggedIn
+          ? <LogoutButton onClick={this.handleLogOutClick} />
           : <LoginButton onClick={this.handleLoginClick} />
         }
       </div>
-    );
+    )
   }
 }
 
 function UserGreeting(props) {
-  return <h1>Welcome back!</h1>;
+  return <h1>Welcome back!!</h1>;
 }
 
-function GuestGreeting(props){
-  return <h1>Please sign up</h1>;
+function GuestGreeting(props) {
+  return <h1>Please Sign Up</h1>;
 }
 
-function Greeting(props){
+function Greeting(props) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn) {
     return <UserGreeting />;
